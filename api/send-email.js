@@ -1,14 +1,5 @@
 const nodemailer = require('nodemailer');
 
-function setCors(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    req.headers['access-control-request-headers'] || 'Content-Type, Accept'
-  );
-  res.setHeader('Access-Control-Max-Age', '86400');
-}
 
 // ── Outlook SMTP transporter ──────────────────────────────────────────────────
 const transporter = nodemailer.createTransport({
@@ -357,29 +348,41 @@ function buildEmailHtml(data) {
 
 // ── Handler ───────────────────────────────────────────────────────────────────
 module.exports = async function handler(req, res) {
-  setCors(req, res);
-  if (req.method === 'OPTIONS') return res.status(200).end();
+
+  // ── CORS — must be set before ANYTHING else ───────────────────────────────
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    req.headers['access-control-request-headers'] || 'Content-Type, Accept'
+  );
+  res.setHeader('Access-Control-Max-Age', '86400');
+
+  if (req.method === 'OPTIONS') return res.status(200).json({});
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { recipientEmail, data } = req.body;
-
-  if (!recipientEmail || !data) {
-    return res.status(400).json({ error: 'Missing recipientEmail or data' });
-  }
-
-  const html = buildEmailHtml(data);
-
-  const mailOptions = {
-    from: `"Education360" <${process.env.SMTP_USER}>`,
-    to: recipientEmail,
-    bcc: process.env.SMTP_USER, // e360@xduce.com receives BCC of every send
-    subject: `Your Education360 Savings Preview — ${data.districtName}`,
-    html,
-  };
-
+  // ── Wrap everything in try-catch so CORS headers always go out ────────────
   try {
+    const body = req.body || {};
+    const { recipientEmail, data } = body;
+
+    if (!recipientEmail || !data) {
+      return res.status(400).json({ error: 'Missing recipientEmail or data' });
+    }
+
+    const html = buildEmailHtml(data);
+
+    const mailOptions = {
+      from: `"Education360" <${process.env.SMTP_USER}>`,
+      to: recipientEmail,
+      bcc: process.env.SMTP_USER,
+      subject: `Your Education360 Savings Preview — ${data.districtName}`,
+      html,
+    };
+
     await transporter.sendMail(mailOptions);
     return res.status(200).json({ success: true });
+
   } catch (err) {
     console.error('Email send error:', err);
     return res.status(500).json({ error: 'Failed to send email', detail: err.message });
