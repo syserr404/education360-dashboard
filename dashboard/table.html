@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education360 · All Submissions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #060D1B; --gold: #E9B84A; --gray3: #8B9DB8;
+      --card: rgba(255,255,255,0.05); --card-b: rgba(255,255,255,0.08);
+    }
+    body { font-family: 'Figtree', sans-serif; background: #060D1B; color: #fff; min-height: 100vh; }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 40px; border-bottom: 1px solid rgba(255,255,255,0.07);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(6,13,27,0.95); backdrop-filter: blur(12px);
+    }
+    .nav-logo { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+    .nav-links { display: flex; gap: 8px; }
+    .nav-link { padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; color: var(--gray3); transition: all 0.2s; }
+    .nav-link:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .nav-link.active { color: #fff; background: rgba(255,255,255,0.1); }
+    .btn-logout { padding: 8px 16px; background: transparent; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; font-family: 'Figtree', sans-serif; font-size: 13px; color: var(--gray3); cursor: pointer; transition: all 0.2s; }
+    .btn-logout:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+
+    main { padding: 40px; max-width: 1400px; margin: 0 auto; }
+    .page-title { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+    .page-sub { font-size: 14px; color: var(--gray3); margin-bottom: 28px; }
+
+    /* FILTERS */
+    .filters {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;
+      background: var(--card); border: 1px solid var(--card-b);
+      border-radius: 14px; padding: 20px;
+    }
+    .filter-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 160px; }
+    .filter-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray3); }
+    input[type=text], input[type=date], select {
+      padding: 10px 14px; background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.1); border-radius: 8px;
+      font-family: 'Figtree', sans-serif; font-size: 13px; color: #fff; outline: none;
+      transition: border-color 0.2s;
+    }
+    input[type=text]:focus, input[type=date]:focus, select:focus { border-color: var(--gold); }
+    input[type=text]::placeholder { color: rgba(255,255,255,0.2); }
+    select option { background: #0D1B2A; color: #fff; }
+    input[type=date]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(0.5); cursor: pointer; }
+
+    .btn-reset { padding: 10px 18px; background: transparent; border: 1.5px solid rgba(255,255,255,0.15); border-radius: 8px; font-family: 'Figtree', sans-serif; font-size: 13px; color: var(--gray3); cursor: pointer; transition: all 0.2s; align-self: flex-end; white-space: nowrap; }
+    .btn-reset:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+
+    /* RESULTS COUNT */
+    .results-count { font-size: 13px; color: var(--gray3); margin-bottom: 16px; }
+    .results-count strong { color: #fff; }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid var(--card-b); }
+    table { width: 100%; border-collapse: collapse; min-width: 1100px; }
+    thead { background: rgba(255,255,255,0.04); }
+    th {
+      padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--gray3); text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.07); white-space: nowrap; cursor: pointer;
+      user-select: none;
+    }
+    th:hover { color: #fff; }
+    th .sort-icon { margin-left: 4px; opacity: 0.4; }
+    th.sorted .sort-icon { opacity: 1; color: var(--gold); }
+    td {
+      padding: 14px 16px; font-size: 13px;
+      border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+    .badge-green { background: rgba(16,185,129,0.12); color: #34D399; }
+    .badge-gold { background: rgba(233,184,74,0.12); color: #E9B84A; }
+
+    .district-name { font-weight: 600; }
+    .district-county { font-size: 11px; color: var(--gray3); margin-top: 2px; }
+
+    /* PAGINATION */
+    .pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding: 0 4px; }
+    .page-info { font-size: 13px; color: var(--gray3); }
+    .page-btns { display: flex; gap: 8px; }
+    .btn-page { padding: 8px 16px; background: var(--card); border: 1px solid var(--card-b); border-radius: 8px; font-family: 'Figtree', sans-serif; font-size: 13px; color: #fff; cursor: pointer; transition: all 0.2s; }
+    .btn-page:hover:not(:disabled) { border-color: var(--gold); color: var(--gold); }
+    .btn-page:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    .loading { text-align: center; padding: 80px; color: var(--gray3); font-size: 14px; }
+
+    /* EXPANDABLE ROW */
+    .btn-expand { background: none; border: none; color: var(--gray3); cursor: pointer; font-size: 18px; line-height: 1; padding: 0 4px; transition: color 0.2s; }
+    .btn-expand:hover { color: #fff; }
+    .detail-row { display: none; }
+    .detail-row.open { display: table-row; }
+    .detail-cell { padding: 0 16px 16px 48px !important; background: rgba(233,184,74,0.03); }
+    .detail-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+    .detail-item { }
+    .detail-key { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray3); margin-bottom: 4px; }
+    .detail-val { font-size: 14px; font-weight: 600; color: #fff; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">Education360 · Analytics</div>
+    <div class="nav-links">
+      <a class="nav-link" href="/dashboard/home.html">Overview</a>
+      <a class="nav-link active" href="/dashboard/table.html">All Submissions</a>
+    </div>
+    <div>
+      <button class="btn-logout" onclick="logout()">Sign Out</button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-title">All Submissions</div>
+    <div class="page-sub">Every email submission from the calculator — searchable, filterable, sortable.</div>
+
+    <!-- FILTERS -->
+    <div class="filters">
+      <div class="filter-group" style="flex:2; min-width:220px;">
+        <div class="filter-label">Search</div>
+        <input type="text" id="f-search" placeholder="District name or email…" oninput="applyFilters()">
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">District Size</div>
+        <select id="f-size" onchange="applyFilters()">
+          <option value="">All sizes</option>
+          <option value="small">Small (&lt;1K)</option>
+          <option value="medium">Medium (1K–5K)</option>
+          <option value="large">Large (5K–15K)</option>
+          <option value="xlarge">Major (15K+)</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">County</div>
+        <select id="f-county" onchange="applyFilters()">
+          <option value="">All counties</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">From Date</div>
+        <input type="date" id="f-date-from" onchange="applyFilters()">
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">To Date</div>
+        <input type="date" id="f-date-to" onchange="applyFilters()">
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">&nbsp;</div>
+        <button class="btn-reset" onclick="resetFilters()">Reset filters</button>
+      </div>
+    </div>
+
+    <div id="loading" class="loading">Loading submissions…</div>
+
+    <div id="content" style="display:none">
+      <div class="results-count" id="results-count"></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:32px"></th>
+              <th onclick="sortBy('district_name')">District <span class="sort-icon" id="si-district_name">↕</span></th>
+              <th onclick="sortBy('email')">Email <span class="sort-icon" id="si-email">↕</span></th>
+              <th onclick="sortBy('students')">Students <span class="sort-icon" id="si-students">↕</span></th>
+              <th onclick="sortBy('current_annual_spend')">Current Spend <span class="sort-icon" id="si-current_annual_spend">↕</span></th>
+              <th onclick="sortBy('total_y3_spend')">Year 3 Spend <span class="sort-icon" id="si-total_y3_spend">↕</span></th>
+              <th onclick="sortBy('saving_y3_vs_today')">Year 3 Saving <span class="sort-icon" id="si-saving_y3_vs_today">↕</span></th>
+              <th onclick="sortBy('spend_reduction_pct')">Reduction <span class="sort-icon" id="si-spend_reduction_pct">↕</span></th>
+              <th onclick="sortBy('hours_recovered_y3')">Hrs/wk Y3 <span class="sort-icon" id="si-hours_recovered_y3">↕</span></th>
+              <th onclick="sortBy('submitted_at')">Submitted <span class="sort-icon" id="si-submitted_at">↕</span></th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+      <div class="pagination">
+        <div class="page-info" id="page-info"></div>
+        <div class="page-btns">
+          <button class="btn-page" id="btn-prev" onclick="changePage(-1)">← Previous</button>
+          <button class="btn-page" id="btn-next" onclick="changePage(1)">Next →</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    if (sessionStorage.getItem('e360_auth') !== 'true') {
+      window.location.href = '/dashboard/index.html';
+    }
+    function logout() {
+      sessionStorage.removeItem('e360_auth');
+      window.location.href = '/dashboard/index.html';
+    }
+
+    let ALL_DATA = [];
+    let filtered = [];
+    let sortKey = 'submitted_at';
+    let sortDir = -1; // -1 = desc, 1 = asc
+    let page = 1;
+    const PAGE_SIZE = 25;
+
+    const fmtMoney = v => v >= 1000000
+      ? '$' + (Math.round(v / 100000) / 10).toFixed(1) + 'M'
+      : '$' + Math.round(v / 1000) + 'K';
+    const fmtDate = s => new Date(s).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+    function sizeLabel(s) {
+      if (s < 1000) return 'small';
+      if (s < 5000) return 'medium';
+      if (s < 15000) return 'large';
+      return 'xlarge';
+    }
+
+    async function loadData() {
+      try {
+        const res = await fetch('/api/get-submissions');
+        const { data } = await res.json();
+        if (!data) { document.getElementById('loading').textContent = 'Error loading data.'; return; }
+        ALL_DATA = data;
+        populateCountyFilter(data);
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+        applyFilters();
+      } catch (e) {
+        document.getElementById('loading').textContent = 'Error loading data.';
+      }
+    }
+
+    function populateCountyFilter(data) {
+      const counties = [...new Set(data.map(r => r.county).filter(Boolean))].sort();
+      const sel = document.getElementById('f-county');
+      counties.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c; opt.textContent = c;
+        sel.appendChild(opt);
+      });
+    }
+
+    function applyFilters() {
+      const search = document.getElementById('f-search').value.toLowerCase();
+      const size = document.getElementById('f-size').value;
+      const county = document.getElementById('f-county').value;
+      const dateFrom = document.getElementById('f-date-from').value;
+      const dateTo = document.getElementById('f-date-to').value;
+
+      filtered = ALL_DATA.filter(r => {
+        if (search && !r.district_name?.toLowerCase().includes(search) && !r.email?.toLowerCase().includes(search)) return false;
+        if (size && sizeLabel(r.students || 0) !== size) return false;
+        if (county && r.county !== county) return false;
+        if (dateFrom && r.submitted_at.slice(0, 10) < dateFrom) return false;
+        if (dateTo && r.submitted_at.slice(0, 10) > dateTo) return false;
+        return true;
+      });
+
+      // Sort
+      filtered.sort((a, b) => {
+        const av = a[sortKey] ?? '';
+        const bv = b[sortKey] ?? '';
+        if (av < bv) return -1 * sortDir;
+        if (av > bv) return 1 * sortDir;
+        return 0;
+      });
+
+      page = 1;
+      renderTable();
+    }
+
+    function sortBy(key) {
+      if (sortKey === key) { sortDir *= -1; }
+      else { sortKey = key; sortDir = -1; }
+      document.querySelectorAll('.sort-icon').forEach(el => el.textContent = '↕');
+      const icon = document.getElementById('si-' + key);
+      if (icon) { icon.textContent = sortDir === -1 ? '↓' : '↑'; }
+      document.querySelectorAll('th').forEach(t => t.classList.remove('sorted'));
+      applyFilters();
+    }
+
+    function changePage(dir) {
+      const maxPage = Math.ceil(filtered.length / PAGE_SIZE);
+      page = Math.max(1, Math.min(maxPage, page + dir));
+      renderTable();
+    }
+
+    function resetFilters() {
+      document.getElementById('f-search').value = '';
+      document.getElementById('f-size').value = '';
+      document.getElementById('f-county').value = '';
+      document.getElementById('f-date-from').value = '';
+      document.getElementById('f-date-to').value = '';
+      applyFilters();
+    }
+
+    function toggleDetail(id) {
+      const row = document.getElementById('detail-' + id);
+      const btn = document.getElementById('expand-' + id);
+      if (row.classList.contains('open')) {
+        row.classList.remove('open');
+        btn.textContent = '+';
+      } else {
+        row.classList.add('open');
+        btn.textContent = '−';
+      }
+    }
+
+    function renderTable() {
+      const start = (page - 1) * PAGE_SIZE;
+      const slice = filtered.slice(start, start + PAGE_SIZE);
+      const maxPage = Math.ceil(filtered.length / PAGE_SIZE);
+
+      document.getElementById('results-count').innerHTML =
+        `Showing <strong>${filtered.length}</strong> submission${filtered.length !== 1 ? 's' : ''}`;
+
+      document.getElementById('page-info').textContent =
+        `Page ${page} of ${maxPage || 1}`;
+      document.getElementById('btn-prev').disabled = page <= 1;
+      document.getElementById('btn-next').disabled = page >= maxPage;
+
+      document.getElementById('table-body').innerHTML = slice.map((r, i) => `
+        <tr>
+          <td><button class="btn-expand" id="expand-${start+i}" onclick="toggleDetail(${start+i})">+</button></td>
+          <td>
+            <div class="district-name">${r.district_name || '—'}</div>
+            <div class="district-county">${r.county || ''}</div>
+          </td>
+          <td style="color:#8B9DB8">${r.email || '—'}</td>
+          <td>${(r.students || 0).toLocaleString()}</td>
+          <td>${fmtMoney(r.current_annual_spend || 0)}</td>
+          <td>${fmtMoney(r.total_y3_spend || 0)}</td>
+          <td style="color:#E9B84A;font-weight:700">${fmtMoney(r.saving_y3_vs_today || 0)}</td>
+          <td><span class="badge badge-green">${r.spend_reduction_pct || 0}%</span></td>
+          <td>${(r.hours_recovered_y3 || 0).toLocaleString()}+ hrs</td>
+          <td style="color:#8B9DB8;font-size:12px">${fmtDate(r.submitted_at)}</td>
+        </tr>
+        <tr class="detail-row" id="detail-${start+i}">
+          <td colspan="10" class="detail-cell">
+            <div class="detail-grid">
+              <div class="detail-item"><div class="detail-key">Educators</div><div class="detail-val">${(r.educators||0).toLocaleString()}</div></div>
+              <div class="detail-item"><div class="detail-key">Leaders</div><div class="detail-val">${r.leaders||0}</div></div>
+              <div class="detail-item"><div class="detail-key">Tools</div><div class="detail-val">${r.tool_count||0} tools</div></div>
+              <div class="detail-item"><div class="detail-key">Selection Method</div><div class="detail-val">${r.selection_method||'—'}</div></div>
+              <div class="detail-item"><div class="detail-key">E360 Annual Cost</div><div class="detail-val">${fmtMoney(r.e360_annual_cost||0)}</div></div>
+              <div class="detail-item"><div class="detail-key">Year 1 Spend</div><div class="detail-val">${fmtMoney(r.total_y1_spend||0)}</div></div>
+              <div class="detail-item"><div class="detail-key">Year 2 Spend</div><div class="detail-val">${fmtMoney(r.total_y2_spend||0)}</div></div>
+              <div class="detail-item"><div class="detail-key">Year 2 Saving</div><div class="detail-val">${fmtMoney(r.saving_y2_vs_today||0)}</div></div>
+              <div class="detail-item"><div class="detail-key">Cost/Student Today</div><div class="detail-val">$${r.cost_per_student_today||72}</div></div>
+              <div class="detail-item"><div class="detail-key">Cost/Student Y3</div><div class="detail-val">$${r.cost_per_student_y3||0}</div></div>
+              <div class="detail-item"><div class="detail-key">Payback Period</div><div class="detail-val">${r.payback_years||'—'} yrs</div></div>
+              <div class="detail-item"><div class="detail-key">Hrs Lost/wk Today</div><div class="detail-val">${(r.hours_lost_weekly_today||0).toLocaleString()}</div></div>
+              <div class="detail-item"><div class="detail-key">Hrs Recovered Y1</div><div class="detail-val">${(r.hours_recovered_y1||0).toLocaleString()}</div></div>
+              <div class="detail-item"><div class="detail-key">Hrs Recovered Y2</div><div class="detail-val">${(r.hours_recovered_y2||0).toLocaleString()}</div></div>
+              <div class="detail-item"><div class="detail-key">Leader Hrs Y3</div><div class="detail-val">${r.leader_hrs_recovered_y3||0}</div></div>
+              <div class="detail-item"><div class="detail-key">Tools List</div><div class="detail-val" style="font-size:11px">${Array.isArray(r.tools)?r.tools.join(', '):'—'}</div></div>
+              <div class="detail-item"><div class="detail-key">Session ID</div><div class="detail-val" style="font-size:11px;color:#8B9DB8">${r.session_id||'—'}</div></div>
+            </div>
+          </td>
+        </tr>`).join('');
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
