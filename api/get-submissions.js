@@ -1,4 +1,5 @@
 const { createClient } = require('@supabase/supabase-js');
+const setCors = require('./_cors');
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -6,6 +7,7 @@ const supabase = createClient(
 );
 
 module.exports = async function handler(req, res) {
+  setCors(res);
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
 
