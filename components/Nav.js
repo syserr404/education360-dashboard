@@ -45,6 +45,19 @@ export default function Nav() {
           </div>
         </div>
 
+        <div style={s.divider} />
+
+        {/* Workshop source */}
+        <div style={s.group}>
+          <div style={s.groupLabel}>E360 Workshop</div>
+          <div style={s.groupLinks}>
+            <Link href="/dashboard/workshop"
+              style={{ ...s.link, ...(active('/dashboard/workshop') ? s.active : {}) }}>
+              Submissions
+            </Link>
+          </div>
+        </div>
+
       </div>
       <button style={s.logout} onClick={logout}>Sign Out</button>
     </nav>
