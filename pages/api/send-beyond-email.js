@@ -26,20 +26,22 @@ function buildUserEmailHtml(data) {
   <meta name="x-apple-disable-message-reformatting" />
   <meta name="color-scheme" content="light only" />
   <title>Thank you for your interest in E360Beyond</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Figtree:wght@400;600;700;800&display=swap');
     body,table,td,p,a { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
     table,td { mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; }
     img { border:0; outline:none; text-decoration:none; display:block; }
     a { text-decoration:none; }
-    body { margin:0!important; padding:0!important; width:100%!important; background-color:#F0EEE9; }
+    body { margin:0!important; padding:0!important; width:100%!important; background-color:#F0EEE9; font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; }
     @media only screen and (max-width:620px) {
       .container { width:100%!important; max-width:100%!important; }
       .px-mobile { padding-left:24px!important; padding-right:24px!important; }
-      .h1-mobile { font-size:22px!important; }
+      .h1-mobile { font-size:20px!important; }
     }
   </style>
 </head>
-<body style="margin:0;padding:0;background-color:#F0EEE9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+<body style="margin:0;padding:0;background-color:#F0EEE9;font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
   <div style="display:none;font-size:1px;color:#F0EEE9;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
     Thank you for raising your hand. You'll hear from us within 48 hours.
   </div>
@@ -53,10 +55,10 @@ function buildUserEmailHtml(data) {
           <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr><td style="padding-bottom:20px;">
               <img src="https://education360-dashboard.vercel.app/assets/education-360-logo.png"
-                alt="Education360" width="160" height="43"
+                alt="Education360" width="200" height="54"
                 style="display:block;border:0;outline:none;text-decoration:none;" />
             </td></tr>
-            <tr><td style="font-family:Georgia,'Times New Roman',serif;font-size:30px;line-height:1.2;color:#FFFFFF;font-weight:400;padding-bottom:20px;" class="h1-mobile">
+            <tr><td style="font-family:'Kaisei Decol',Georgia,'Times New Roman',serif;font-size:26px;line-height:1.2;color:#FFFFFF;font-weight:400;padding-bottom:20px;white-space:nowrap;" class="h1-mobile">
               Thank you for your interest in E360Beyond
             </td></tr>
             <tr><td>
@@ -108,7 +110,7 @@ function buildUserEmailHtml(data) {
         <tr><td style="background-color:#0D1B2A;padding:32px 48px;" class="px-mobile">
           <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr><td align="center">
-              <p style="margin:0 0 10px 0;font-family:Georgia,'Times New Roman',serif;font-size:14px;color:#FFFFFF;font-style:italic;line-height:1.5;">Committed to what happens next for your students.</p>
+              <p style="margin:0 0 10px 0;font-family:'Kaisei Decol',Georgia,'Times New Roman',serif;font-size:14px;color:#FFFFFF;font-style:italic;line-height:1.5;">Committed to what happens next for your students.</p>
               <p style="margin:0;font-size:10px;letter-spacing:2.5px;color:#C9A84C;font-weight:700;text-transform:uppercase;">E360BEYOND &nbsp;&middot;&nbsp; AN INITIATIVE OF XDUCE PUBLIC SERVICES</p>
             </td></tr>
           </table>

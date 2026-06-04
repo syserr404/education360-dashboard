@@ -34,21 +34,23 @@ function buildEmailHtml(data) {
   <meta name="x-apple-disable-message-reformatting" />
   <meta name="color-scheme" content="light only" />
   <title>Your Education360 Savings Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Figtree:wght@400;600;700;800&display=swap');
     body,table,td,p,a { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
     table,td { mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; }
     img { border:0; outline:none; text-decoration:none; display:block; }
     a { text-decoration:none; }
-    body { margin:0!important; padding:0!important; width:100%!important; background-color:#F0EEE9; }
+    body { margin:0!important; padding:0!important; width:100%!important; background-color:#F0EEE9; font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; }
     @media only screen and (max-width:620px) {
       .container { width:100%!important; max-width:100%!important; }
       .px-mobile { padding-left:24px!important; padding-right:24px!important; }
-      .h1-mobile { font-size:26px!important; }
+      .h1-mobile { font-size:22px!important; }
       .stat-value-mobile { font-size:20px!important; }
     }
   </style>
 </head>
-<body style="margin:0;padding:0;background-color:#F0EEE9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+<body style="margin:0;padding:0;background-color:#F0EEE9;font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
   <div style="display:none;font-size:1px;color:#F0EEE9;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
     A directional preview of what consolidating onto one connected platform could mean for your district.
   </div>
@@ -64,12 +66,12 @@ function buildEmailHtml(data) {
             <tr>
               <td style="padding-bottom:20px;">
                 <img src="https://education360-dashboard.vercel.app/assets/education-360-logo.png"
-                  alt="Education360" width="160" height="43"
+                  alt="Education360" width="200" height="54"
                   style="display:block;border:0;outline:none;text-decoration:none;" />
               </td>
             </tr>
             <tr>
-              <td style="font-family:Georgia,'Times New Roman',serif;font-size:30px;line-height:1.2;color:#FFFFFF;font-weight:400;padding-bottom:20px;" class="h1-mobile">
+              <td style="font-family:'Kaisei Decol',Georgia,'Times New Roman',serif;font-size:28px;line-height:1.2;color:#FFFFFF;font-weight:400;padding-bottom:20px;white-space:nowrap;" class="h1-mobile">
                 Your savings preview is ready.
               </td>
             </tr>
@@ -206,7 +208,7 @@ function buildEmailHtml(data) {
                 style="display:inline-block;border:0;outline:none;text-decoration:none;" />
             </td></tr>
             <tr><td align="center">
-              <p style="margin:0 0 10px 0;font-family:Georgia,'Times New Roman',serif;font-size:14px;color:#FFFFFF;font-style:italic;line-height:1.5;">Committed to what happens next for your students.</p>
+              <p style="margin:0 0 10px 0;font-family:'Kaisei Decol',Georgia,'Times New Roman',serif;font-size:14px;color:#FFFFFF;font-style:italic;line-height:1.5;">Committed to what happens next for your students.</p>
               <p style="margin:0;font-size:10px;letter-spacing:2.5px;color:#C9A84C;font-weight:700;text-transform:uppercase;">EDUCATION360 &nbsp;&middot;&nbsp; XDUCEPUBLICSERVICES.COM</p>
             </td></tr>
           </table>
