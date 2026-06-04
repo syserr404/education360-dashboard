@@ -51,7 +51,7 @@ function buildUserEmailHtml(data) {
         <tr><td style="background-color:#0D1B2A;padding:36px 48px 28px 48px;" class="px-mobile">
           <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr><td style="padding-bottom:20px;">
-              <img src="https://education360-dashboard.vercel.app/assets/education360-logo-webview.svg"
+              <img src="https://education360-dashboard.vercel.app/assets/education-360-logo.png"
                 alt="Education360" width="160" height="43"
                 style="display:block;border:0;outline:none;text-decoration:none;" />
             </td></tr>
