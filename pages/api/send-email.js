@@ -63,14 +63,9 @@ function buildEmailHtml(data) {
           <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr>
               <td style="padding-bottom:20px;">
-                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td style="background-color:#C9A84C;border-radius:4px;width:28px;height:28px;text-align:center;vertical-align:middle;">
-                      <span style="font-size:14px;color:#0D1B2A;font-weight:900;line-height:28px;display:block;">&#9670;</span>
-                    </td>
-                    <td style="padding-left:10px;font-size:12px;letter-spacing:2.5px;color:#C9A84C;font-weight:700;text-transform:uppercase;vertical-align:middle;">EDUCATION360</td>
-                  </tr>
-                </table>
+                <img src="https://education360-dashboard.vercel.app/assets/education360-logo-webview.svg"
+                  alt="Education360" width="160" height="43"
+                  style="display:block;border:0;outline:none;text-decoration:none;" />
               </td>
             </tr>
             <tr>
@@ -205,6 +200,11 @@ function buildEmailHtml(data) {
         <!-- BRAND STRIP -->
         <tr><td style="background-color:#0D1B2A;padding:32px 48px;" class="px-mobile">
           <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr><td align="center" style="padding-bottom:16px;">
+              <img src="https://education360-dashboard.vercel.app/assets/xduce-logo.png"
+                alt="XDuce Public Services" width="100" height="auto"
+                style="display:inline-block;border:0;outline:none;text-decoration:none;" />
+            </td></tr>
             <tr><td align="center">
               <p style="margin:0 0 10px 0;font-family:Georgia,'Times New Roman',serif;font-size:14px;color:#FFFFFF;font-style:italic;line-height:1.5;">Committed to what happens next for your students.</p>
               <p style="margin:0;font-size:10px;letter-spacing:2.5px;color:#C9A84C;font-weight:700;text-transform:uppercase;">EDUCATION360 &nbsp;&middot;&nbsp; XDUCEPUBLICSERVICES.COM</p>

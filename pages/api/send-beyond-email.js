@@ -50,7 +50,11 @@ function buildUserEmailHtml(data) {
         <!-- HEADER -->
         <tr><td style="background-color:#0D1B2A;padding:36px 48px 28px 48px;" class="px-mobile">
           <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-            <tr><td style="font-family:-apple-system,sans-serif;font-size:11px;letter-spacing:2px;color:#D4A017;font-weight:700;text-transform:uppercase;padding-bottom:14px;">E360BEYOND</td></tr>
+            <tr><td style="padding-bottom:20px;">
+              <img src="https://education360-dashboard.vercel.app/assets/education360-logo-webview.svg"
+                alt="Education360" width="160" height="43"
+                style="display:block;border:0;outline:none;text-decoration:none;" />
+            </td></tr>
             <tr><td style="font-family:Georgia,'Times New Roman',serif;font-size:24px;line-height:1.25;color:#FFFFFF;font-weight:400;" class="h1-mobile">Thank you for your interest in E360Beyond.</td></tr>
             <tr><td style="padding-top:18px;"><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td style="background-color:#D4A017;height:2px;width:40px;line-height:2px;font-size:0;">&nbsp;</td></tr></table></td></tr>
           </table>
@@ -95,6 +99,11 @@ function buildUserEmailHtml(data) {
         <!-- BRAND STRIP -->
         <tr><td style="background-color:#0D1B2A;padding:28px 48px;" class="px-mobile">
           <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr><td align="center" style="padding-bottom:16px;">
+              <img src="https://education360-dashboard.vercel.app/assets/xduce-logo.png"
+                alt="XDuce Public Services" width="100" height="auto"
+                style="display:inline-block;border:0;outline:none;text-decoration:none;" />
+            </td></tr>
             <tr><td align="center">
               <p style="margin:0 0 8px 0;font-family:Georgia,'Times New Roman',serif;font-size:14px;color:#FFFFFF;font-style:italic;">Committed to what happens next for your students.</p>
               <p style="margin:0;font-size:11px;letter-spacing:2px;color:#D4A017;font-weight:700;text-transform:uppercase;">E360BEYOND &nbsp;&middot;&nbsp; xducepublicservices.com</p>
