@@ -14,7 +14,8 @@ const transporter = nodemailer.createTransport({
 const BEN_EMAIL = 'ben.miller@xduce.com';
 
 function buildUserEmailHtml(data) {
-  const { firstName, lastName, title, schoolName } = data;
+  const { firstName } = data;
+  const greeting = firstName ? `Hi <strong>${firstName}</strong>,` : 'Hi there,';
 
   return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
@@ -30,7 +31,7 @@ function buildUserEmailHtml(data) {
     table,td { mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; }
     img { border:0; outline:none; text-decoration:none; display:block; }
     a { text-decoration:none; }
-    body { margin:0!important; padding:0!important; width:100%!important; background-color:#F4F2EE; }
+    body { margin:0!important; padding:0!important; width:100%!important; background-color:#F0EEE9; }
     @media only screen and (max-width:620px) {
       .container { width:100%!important; max-width:100%!important; }
       .px-mobile { padding-left:24px!important; padding-right:24px!important; }
@@ -38,87 +39,98 @@ function buildUserEmailHtml(data) {
     }
   </style>
 </head>
-<body style="margin:0;padding:0;background-color:#F4F2EE;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
-  <div style="display:none;font-size:1px;color:#F4F2EE;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
+<body style="margin:0;padding:0;background-color:#F0EEE9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <div style="display:none;font-size:1px;color:#F0EEE9;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
     Thank you for raising your hand. You'll hear from us within 48 hours.
   </div>
-  <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#F4F2EE;">
+  <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#F0EEE9;">
     <tr><td align="center" style="padding:32px 12px;">
       <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" class="container"
-        style="width:600px;max-width:600px;background-color:#FFFFFF;border-radius:8px;overflow:hidden;">
+        style="width:600px;max-width:600px;background-color:#FFFFFF;border-radius:4px;overflow:hidden;">
 
         <!-- HEADER -->
-        <tr><td style="background-color:#0D1B2A;padding:36px 48px 28px 48px;" class="px-mobile">
+        <tr><td style="background-color:#0D1B2A;padding:40px 48px 32px 48px;" class="px-mobile">
           <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr><td style="padding-bottom:20px;">
               <img src="https://education360-dashboard.vercel.app/assets/education-360-logo.png"
                 alt="Education360" width="160" height="43"
                 style="display:block;border:0;outline:none;text-decoration:none;" />
             </td></tr>
-            <tr><td style="font-family:Georgia,'Times New Roman',serif;font-size:24px;line-height:1.25;color:#FFFFFF;font-weight:400;" class="h1-mobile">Thank you for your interest in E360Beyond.</td></tr>
-            <tr><td style="padding-top:18px;"><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td style="background-color:#D4A017;height:2px;width:40px;line-height:2px;font-size:0;">&nbsp;</td></tr></table></td></tr>
-          </table>
-        </td></tr>
-
-        <!-- GREETING -->
-        <tr><td style="padding:36px 48px 8px 48px;" class="px-mobile">
-          <p style="margin:0 0 16px 0;font-size:16px;line-height:1.55;color:#1F2937;">Hi ${firstName},</p>
-          <p style="margin:0 0 16px 0;font-size:16px;line-height:1.6;color:#4B5563;">Thank you for raising your hand.</p>
-          <p style="margin:0;font-size:16px;line-height:1.6;color:#4B5563;">Programs like E360Beyond don't get built by us alone. They get built by the educators, leaders, parents, and partners who believe students deserve more than a diploma — and who are willing to help us prove it.</p>
-        </td></tr>
-
-        <!-- WHAT HAPPENS NEXT -->
-        <tr><td style="padding:32px 48px 8px 48px;" class="px-mobile">
-          <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#F8F6F1;border-radius:6px;">
-            <tr><td style="padding:22px 24px;">
-              <p style="margin:0 0 6px 0;font-size:11px;letter-spacing:1.5px;color:#6B7280;font-weight:600;text-transform:uppercase;">What Happens Next</p>
-              <p style="margin:0;font-size:15px;line-height:1.65;color:#1F2937;">You'll hear from someone on our team within <strong>48 hours</strong> to schedule a 30-minute conversation. The call is informal. We want to understand your district, your students, and the gaps you're already trying to close.</p>
+            <tr><td style="font-family:Georgia,'Times New Roman',serif;font-size:30px;line-height:1.2;color:#FFFFFF;font-weight:400;padding-bottom:20px;" class="h1-mobile">
+              Thank you for your interest in E360Beyond
+            </td></tr>
+            <tr><td>
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                <tr><td style="background-color:#C9A84C;height:2px;width:48px;line-height:2px;font-size:0;">&nbsp;</td></tr>
+              </table>
             </td></tr>
           </table>
         </td></tr>
 
-        <!-- BODY -->
-        <tr><td style="padding:28px 48px 8px 48px;" class="px-mobile">
-          <p style="margin:0 0 16px 0;font-size:16px;line-height:1.6;color:#4B5563;">You'll learn how E360Beyond works, what it can look like for your community, and how we can shape it together.</p>
-          <p style="margin:0 0 24px 0;font-size:14px;line-height:1.5;color:#0D1B2A;font-weight:600;">No paperwork. No pitch. No commitment.</p>
-          <p style="margin:0;font-size:16px;line-height:1.6;color:#4B5563;">If your timeline is urgent or you'd like to share something ahead of the call, reply to this email — it comes straight to me.</p>
+        <!-- GREETING + BODY -->
+        <tr><td style="padding:40px 48px 0 48px;background-color:#FFFFFF;" class="px-mobile">
+          <p style="margin:0 0 20px 0;font-size:16px;line-height:1.55;color:#111827;">${greeting}</p>
+          <p style="margin:0 0 20px 0;font-size:16px;line-height:1.65;color:#374151;">Thank you for raising your hand.</p>
+          <p style="margin:0 0 20px 0;font-size:16px;line-height:1.65;color:#374151;">Programs like E360Beyond don't get built by us alone. They get built by the educators, leaders, parents, and partners who believe students deserve more than a diploma — and who are willing to help us prove it.</p>
+          <p style="margin:0 0 20px 0;font-size:16px;line-height:1.65;color:#374151;">You'll hear from someone on our team within <strong style="color:#111827;">48 hours to schedule a 30-minute conversation</strong>. The call is informal. We want to understand your district, your students, and the gaps you're already trying to close. You'll learn how E360Beyond works, what it can look like for your community, and how we can shape it together.</p>
+          <p style="margin:0 0 20px 0;font-size:16px;line-height:1.65;color:#374151;">Bring your team. We bring the questions. You leave with a one-page picture of your district's technology landscape and a recommended first move — yours to keep, whether or not it involves us.</p>
+          <p style="margin:0 0 32px 0;font-size:15px;line-height:1.5;color:#111827;font-weight:700;">No cost. No pitch. No commitment.</p>
+        </td></tr>
+
+        <!-- BUTTON -->
+        <tr><td style="padding:0 48px 40px 48px;background-color:#FFFFFF;" class="px-mobile">
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+            <tr><td style="background-color:#C9A84C;border-radius:40px;">
+              <a href="#" target="_blank" style="display:inline-block;padding:16px 36px;font-size:15px;color:#0D1B2A;font-weight:700;text-decoration:none;border-radius:40px;background-color:#C9A84C;letter-spacing:0.01em;">
+                Schedule a 30-minute conversation &rarr;
+              </a>
+            </td></tr>
+          </table>
         </td></tr>
 
         <!-- DIVIDER -->
-        <tr><td style="padding:32px 48px 0 48px;"><table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td style="border-top:1px solid #E5E7EB;height:1px;line-height:1px;font-size:0;">&nbsp;</td></tr></table></td></tr>
+        <tr><td style="padding:0 48px;background-color:#FFFFFF;">
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr><td style="border-top:1px solid #E5E7EB;height:1px;line-height:1px;font-size:0;">&nbsp;</td></tr>
+          </table>
+        </td></tr>
 
-        <!-- SIGNATURE -->
-        <tr><td style="padding:28px 48px 40px 48px;" class="px-mobile">
-          <p style="margin:0 0 6px 0;font-size:15px;line-height:1.5;color:#1F2937;">Talk soon.</p>
-          <p style="margin:0 0 2px 0;font-size:15px;line-height:1.5;color:#1F2937;">Warm regards,</p>
-          <p style="margin:12px 0 2px 0;font-size:15px;line-height:1.5;color:#0D1B2A;font-weight:700;">Ben Miller</p>
-          <p style="margin:0 0 2px 0;font-size:14px;line-height:1.5;color:#6B7280;">E360Beyond Program Lead</p>
-          <p style="margin:0;font-size:14px;line-height:1.5;color:#6B7280;font-style:italic;">XDuce Public Services</p>
+        <!-- POST-DIVIDER + SIGNATURE -->
+        <tr><td style="padding:32px 48px 40px 48px;background-color:#FFFFFF;" class="px-mobile">
+          <p style="margin:0 0 20px 0;font-size:16px;line-height:1.65;color:#374151;">If your timeline is urgent or you'd like to share something ahead of the call, reply to this email — it comes straight to me.</p>
+          <p style="margin:0 0 20px 0;font-size:15px;line-height:1.5;color:#374151;">Talk soon.</p>
+          <p style="margin:0 0 6px 0;font-size:15px;line-height:1.5;color:#374151;">Warm regards,</p>
+          <p style="margin:0 0 2px 0;font-size:15px;line-height:1.5;color:#111827;font-weight:700;">Ben Miller</p>
+          <p style="margin:0;font-size:14px;line-height:1.5;color:#6B7280;font-style:italic;">E360Beyond Program Lead &nbsp;XDuce Public Services</p>
         </td></tr>
 
         <!-- BRAND STRIP -->
-        <tr><td style="background-color:#0D1B2A;padding:28px 48px;" class="px-mobile">
+        <tr><td style="background-color:#0D1B2A;padding:32px 48px;" class="px-mobile">
           <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-            <tr><td align="center" style="padding-bottom:16px;">
-              <img src="https://education360-dashboard.vercel.app/assets/xduce-logo.png"
-                alt="XDuce Public Services" width="100" height="auto"
-                style="display:inline-block;border:0;outline:none;text-decoration:none;" />
-            </td></tr>
             <tr><td align="center">
-              <p style="margin:0 0 8px 0;font-family:Georgia,'Times New Roman',serif;font-size:14px;color:#FFFFFF;font-style:italic;">Committed to what happens next for your students.</p>
-              <p style="margin:0;font-size:11px;letter-spacing:2px;color:#D4A017;font-weight:700;text-transform:uppercase;">E360BEYOND &nbsp;&middot;&nbsp; xducepublicservices.com</p>
+              <p style="margin:0 0 10px 0;font-family:Georgia,'Times New Roman',serif;font-size:14px;color:#FFFFFF;font-style:italic;line-height:1.5;">Committed to what happens next for your students.</p>
+              <p style="margin:0;font-size:10px;letter-spacing:2.5px;color:#C9A84C;font-weight:700;text-transform:uppercase;">E360BEYOND &nbsp;&middot;&nbsp; AN INITIATIVE OF XDUCE PUBLIC SERVICES</p>
             </td></tr>
           </table>
         </td></tr>
 
+        <!-- LEGAL -->
+        <tr><td style="background-color:#F0EEE9;padding:28px 48px 16px 48px;" class="px-mobile">
+          <p style="margin:0 0 10px 0;font-size:10px;letter-spacing:1.5px;color:#6B7280;font-weight:700;text-transform:uppercase;">About This Program</p>
+          <p style="margin:0;font-size:11px;line-height:1.7;color:#9CA3AF;">The figures in this email are an illustrative projection generated from publicly available industry benchmarks and the inputs you provided. They are not a quote, proposal, offer, or commitment of any kind. Actual pricing, savings, scope, and outcomes vary by district based on existing contracts, module selection, integration requirements, implementation timeline, and other factors. Education360 licensing is structured per district based on selected modules, deployment scope, and institutional needs. Nothing in this email creates an obligation, express or implied, on the part of XDuce Public Services, LLC to provide services at any specific price. All commercial terms are governed by a separately negotiated written agreement.</p>
+        </td></tr>
+
         <!-- FOOTER -->
-        <tr><td style="background-color:#F4F2EE;padding:24px 48px 28px 48px;" class="px-mobile">
-          <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td style="border-top:1px solid #E5E7EB;height:1px;line-height:1px;font-size:0;">&nbsp;</td></tr></table>
+        <tr><td style="background-color:#F0EEE9;padding:0 48px 28px 48px;" class="px-mobile">
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr><td style="border-top:1px solid #E0DDD8;height:1px;line-height:1px;font-size:0;">&nbsp;</td></tr>
+          </table>
           <p style="margin:18px 0 6px 0;font-size:11px;line-height:1.5;color:#9CA3AF;">XDuce Public Services, LLC &middot; 510 Thornall Street, Suite 375, Edison, NJ 08837</p>
           <p style="margin:0;font-size:11px;line-height:1.5;color:#9CA3AF;">
             You received this email because you submitted your interest in the E360Beyond program.
-            <a href="#" style="color:#6B7280;text-decoration:underline;">Unsubscribe</a> &middot;
-            <a href="#" style="color:#6B7280;text-decoration:underline;">Privacy</a>
+            <a href="#" style="color:#9CA3AF;text-decoration:underline;">Unsubscribe</a>
+            &nbsp;
+            <a href="#" style="color:#9CA3AF;text-decoration:underline;">Privacy</a>
           </p>
         </td></tr>
 
