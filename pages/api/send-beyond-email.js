@@ -79,17 +79,6 @@ function buildUserEmailHtml(data) {
           <p style="margin:0 0 32px 0;font-size:15px;line-height:1.5;color:#111827;font-weight:700;">No cost. No pitch. No commitment.</p>
         </td></tr>
 
-        <!-- BUTTON -->
-        <tr><td style="padding:0 48px 40px 48px;background-color:#FFFFFF;" class="px-mobile">
-          <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-            <tr><td style="background-color:#C9A84C;border-radius:40px;">
-              <a href="#" target="_blank" style="display:inline-block;padding:16px 36px;font-size:15px;color:#0D1B2A;font-weight:700;text-decoration:none;border-radius:40px;background-color:#C9A84C;letter-spacing:0.01em;">
-                Schedule a 30-minute conversation &rarr;
-              </a>
-            </td></tr>
-          </table>
-        </td></tr>
-
         <!-- DIVIDER -->
         <tr><td style="padding:0 48px;background-color:#FFFFFF;">
           <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
