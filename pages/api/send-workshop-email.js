@@ -77,7 +77,7 @@ function buildUserEmailHtml(data) {
 
           <!-- WHAT HAPPENS NEXT LABEL -->
           <p style="margin:0 0 10px 0;font-size:10px;letter-spacing:2px;color:#C9A84C;font-weight:700;text-transform:uppercase;">What Happens Next</p>
-          <p style="margin:0 0 20px 0;font-size:16px;line-height:1.65;color:#374151;">You'll hear from someone on our team within <strong style="color:#111827;">48 business hours to schedule a 30-minute intro call</strong>. The conversation is informal — we want to understand your district, your current technology landscape, and the challenges you're already trying to solve.</p>
+          <p style="margin:0 0 20px 0;font-size:16px;line-height:1.65;color:#374151;">You'll hear from someone on our team within <strong style="color:#111827;">48 business hours to schedule a 15-minute intro call</strong>. The conversation is informal — we want to understand your district, your current technology landscape, and the challenges you're already trying to solve.</p>
           <p style="margin:0 0 20px 0;font-size:16px;line-height:1.65;color:#374151;">From there, if it feels like the right fit, we'll schedule a <strong style="color:#111827;">90-minute workshop</strong> with your district leadership team. We'll go deeper — walking through how Education360 works, what consolidation can realistically look like for your district, and how we approach building something that actually fits your needs.</p>
           <p style="margin:0 0 32px 0;font-size:15px;line-height:1.5;color:#111827;font-weight:700;">No paperwork. No pitch. No commitment.</p>
         </td></tr>
