@@ -25,7 +25,7 @@ function buildUserEmailHtml(data) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="x-apple-disable-message-reformatting" />
   <meta name="color-scheme" content="light only" />
-  <title>Thank you for reaching out — Education360 Workshop</title>
+  <title>Thank you for your interest in Education360.</title>
   <style type="text/css">
     body,table,td,p,a { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
     table,td { mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; }
@@ -41,7 +41,7 @@ function buildUserEmailHtml(data) {
 </head>
 <body style="margin:0;padding:0;background-color:#F0EEE9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
   <div style="display:none;font-size:1px;color:#F0EEE9;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
-    Thank you for reaching out — you'll hear from us within 48 hours.
+    Thank you for reaching out — you'll hear from us within 48 business hours.
   </div>
   <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#F0EEE9;">
     <tr><td align="center" style="padding:32px 12px;">
@@ -57,7 +57,7 @@ function buildUserEmailHtml(data) {
                 style="display:block;border:0;outline:none;text-decoration:none;" />
             </td></tr>
             <tr><td style="font-family:Georgia,'Times New Roman',serif;font-size:30px;line-height:1.2;color:#FFFFFF;font-weight:400;padding-bottom:20px;" class="h1-mobile">
-              Thank you for reaching out — we're glad you did.
+              Thank you for your interest in Education360.
             </td></tr>
             <tr><td>
               <table role="presentation" border="0" cellpadding="0" cellspacing="0">
@@ -75,20 +75,9 @@ function buildUserEmailHtml(data) {
 
           <!-- WHAT HAPPENS NEXT LABEL -->
           <p style="margin:0 0 10px 0;font-size:10px;letter-spacing:2px;color:#C9A84C;font-weight:700;text-transform:uppercase;">What Happens Next</p>
-          <p style="margin:0 0 20px 0;font-size:16px;line-height:1.65;color:#374151;">You'll hear from someone on our team within <strong style="color:#111827;">48 hours to schedule a 30-minute conversation</strong>. The call is informal. We want to understand your district, your current technology landscape, and the challenges you're already trying to solve.</p>
-          <p style="margin:0 0 20px 0;font-size:16px;line-height:1.65;color:#374151;">You'll learn how Education360 works, what consolidation can realistically look like for your district, and how we approach building something that actually fits — not a one-size-fits-all deployment.</p>
+          <p style="margin:0 0 20px 0;font-size:16px;line-height:1.65;color:#374151;">You'll hear from someone on our team within <strong style="color:#111827;">48 business hours to schedule a 30-minute intro call</strong>. The conversation is informal — we want to understand your district, your current technology landscape, and the challenges you're already trying to solve.</p>
+          <p style="margin:0 0 20px 0;font-size:16px;line-height:1.65;color:#374151;">From there, if it feels like the right fit, we'll schedule a <strong style="color:#111827;">90-minute workshop</strong> with your district leadership team. We'll go deeper — walking through how Education360 works, what consolidation can realistically look like for your district, and how we approach building something that actually fits your needs.</p>
           <p style="margin:0 0 32px 0;font-size:15px;line-height:1.5;color:#111827;font-weight:700;">No paperwork. No pitch. No commitment.</p>
-        </td></tr>
-
-        <!-- BUTTON -->
-        <tr><td style="padding:0 48px 40px 48px;background-color:#FFFFFF;" class="px-mobile">
-          <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-            <tr><td style="background-color:#C9A84C;border-radius:40px;">
-              <a href="#" target="_blank" style="display:inline-block;padding:16px 36px;font-size:15px;color:#0D1B2A;font-weight:700;text-decoration:none;border-radius:40px;background-color:#C9A84C;letter-spacing:0.01em;">
-                Schedule a 30-minute conversation &rarr;
-              </a>
-            </td></tr>
-          </table>
         </td></tr>
 
         <!-- DIVIDER -->
@@ -104,11 +93,8 @@ function buildUserEmailHtml(data) {
           <p style="margin:0 0 20px 0;font-size:15px;line-height:1.5;color:#374151;">Talk soon.</p>
           <p style="margin:0 0 6px 0;font-size:15px;line-height:1.5;color:#374151;">Warm Regards,</p>
           <p style="margin:0 0 2px 0;font-size:15px;line-height:1.5;color:#111827;font-weight:700;">Ben Miller</p>
-          <p style="margin:0 0 2px 0;font-size:14px;line-height:1.5;color:#6B7280;font-style:italic;">XDuce Public Services, Account Lead</p>
-          <p style="margin:0 0 2px 0;font-size:14px;line-height:1.5;color:#6B7280;">
-            <a href="mailto:ben.miller@xduce.com" style="color:#0D1B2A;text-decoration:underline;font-weight:600;">ben.miller@xduce.com</a>
-          </p>
-          <p style="margin:0;font-size:14px;line-height:1.5;color:#6B7280;">(732)-245-1384</p>
+          <p style="margin:0 0 2px 0;font-size:14px;line-height:1.5;color:#6B7280;font-style:italic;">Education360 Sales Lead</p>
+          <p style="margin:0;font-size:14px;line-height:1.5;color:#6B7280;font-style:italic;">XDuce Public Services</p>
         </td></tr>
 
         <!-- BRAND STRIP -->
